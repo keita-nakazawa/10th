@@ -19,22 +19,26 @@
 		
 		<table>
 			<thead>
-				<th></th>
-				<th>学籍番号</th>
-				<th>氏名</th>
-				<th>メモ</th>
-				<th>メモ作成者</th>
+				<tr>
+					<th></th>
+					<th>学籍番号</th>
+					<th>氏名</th>
+					<th>メモ</th>
+					<th>メモ作成者</th>
+				</tr>
 			</thead>
 			<tbody>
-				<td><a href="#">編集・削除</a></td>
-				<td></td>
-				<td></td>
-				<td>
-					<form action="#">
-						<input type="submit" value="表示/非表示">
-					</form>
-				</td>
-				<td></td>
+				<tr>
+					<td><a href="#">編集・削除</a></td>
+					<td></td>
+					<td></td>
+					<td>
+						<form action="#">
+							<input type="submit" value="表示/非表示">
+						</form>
+					</td>
+					<td></td>
+				</tr>
 			</tbody>
 		
 		</table>
