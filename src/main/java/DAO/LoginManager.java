@@ -47,7 +47,7 @@ public class LoginManager {
 		
 		return staff;
 	}
-	
+		
 	
 	public void getConnect() throws ClassNotFoundException, SQLException{
 		Class.forName("org.mariadb.jdbc.Driver");

@@ -1,3 +1,6 @@
+<%@page import="model.Student"%>
+<%@page import="model.Memo"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page import="model.Staff"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,6 +15,12 @@
 	<body>
 <%
 		Staff loginUser = (Staff)session.getAttribute("loginUser");
+		ArrayList<Memo> memoList = 
+				(ArrayList)session.getAttribute("memoList");
+		ArrayList<Staff> staffList = 
+				(ArrayList)session.getAttribute("staffList");
+		ArrayList<Student> studentList = 
+				(ArrayList)session.getAttribute("studentList");
 %>	
 		<p><%=loginUser.getStaffName()%>先生がログイン中</p>
 		<form action="LoginLogoutServlet" method="GET">
@@ -22,30 +31,26 @@
 		<table border="1">
 			<thead>
 				<tr>
-					<th></th>
 					<th>学籍番号</th>
 					<th>氏名</th>
-					<th>メモ</th>
-					<th>メモ作成者</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 <%
-for(int i = 0; i < 50; i++) {
+				for(Student student: studentList) {
 %>
-				<tr>
-					<td><a href="#">編集・削除</a></td>
-					<td></td>
-					<td></td>
-					<td>
-						<form action="#">
-							<input type="submit" value="表示/非表示">
-						</form>
-					</td>
-					<td></td>
-				</tr>
+					<tr>
+						<td><%=student.getStudentNumber()%></td>
+						<td><%=student.getStudentName()%></td>
+						<td>
+							<form action="DetailServlet">
+								<input type="submit" name=<%=student.getStudentNumber()%> value="詳細・編集・削除">
+							</form>
+						</td>
+					</tr>
 <%
-}
+				}
 %>
 			</tbody>
 		

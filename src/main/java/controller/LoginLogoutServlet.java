@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.ListManager;
 import DAO.LoginManager;
 import model.Staff;
 
@@ -29,6 +30,11 @@ public class LoginLogoutServlet extends HttpServlet {
 		if(staff != null) {
 			//ログイン成功時処理
 			session.setAttribute("loginUser", staff);
+			
+			ListManager listManager = new ListManager();
+			session.setAttribute("memoList", listManager.getMemoList());
+			session.setAttribute("staffList", listManager.getStaffList());
+			session.setAttribute("studentList", listManager.getStudentList());
 
 			RequestDispatcher rd = request.getRequestDispatcher("studentList.jsp");
 			rd.forward(request, response);			
