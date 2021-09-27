@@ -30,6 +30,9 @@
 				</tr>
 			</thead>
 			<tbody>
+<%
+for(int i = 0; i < 50; i++) {
+%>
 				<tr>
 					<td><a href="#">編集・削除</a></td>
 					<td></td>
@@ -41,6 +44,9 @@
 					</td>
 					<td></td>
 				</tr>
+<%
+}
+%>
 			</tbody>
 		
 		</table>
