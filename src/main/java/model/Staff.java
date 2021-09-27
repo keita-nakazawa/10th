@@ -6,6 +6,12 @@ public class Staff {
 	private String staffName;
 	private String pass;
 	
+	public Staff(int staffId, String staffName, String pass) {
+		this.staffId = staffId;
+		this.staffName = staffName;
+		this.pass = pass;
+	}
+	
 	public int getStaffId() {
 		return staffId;
 	}

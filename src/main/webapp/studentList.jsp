@@ -9,15 +9,17 @@
 		<title>学生名簿</title>
 	</head>
 
-	<body>	
-
-
-		<form action="LogoutServlet" method="GET">
+	<body>
+<%
+		Staff loginUser = (Staff)session.getAttribute("loginUser");
+%>	
+		<p><%=loginUser.getStaffName()%>先生がログイン中</p>
+		<form action="LoginLogoutServlet" method="GET">
 			<p><input type="submit" value="ログアウト"></p>
 		</form>
 		<p>学生情報の登録は<a href="registerStudent.jsp">こちら</a></p>
 		
-		<table>
+		<table border="1">
 			<thead>
 				<tr>
 					<th></th>
