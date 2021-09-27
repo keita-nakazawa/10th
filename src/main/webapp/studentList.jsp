@@ -22,7 +22,7 @@
 		ArrayList<Student> studentList = 
 				(ArrayList)session.getAttribute("studentList");
 %>	
-		<p><%=loginUser.getStaffName()%>先生がログイン中</p>
+		<p id="top"><%=loginUser.getStaffName()%>先生がログイン中</p>
 		<form action="LoginLogoutServlet" method="GET">
 			<p><input type="submit" value="ログアウト"></p>
 		</form>
@@ -56,6 +56,6 @@
 		
 		</table>
 		
-		<a href="#">ページ最上部へ</a>
+		<a href="#top">ページ最上部へ</a>
 	</body>
 </html>
