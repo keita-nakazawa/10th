@@ -24,8 +24,4 @@ public class Staff {
 	public String getStaffName() {
 		return staffName;
 	}
-	
-	public String getPass() {
-		return pass;
-	}
 }

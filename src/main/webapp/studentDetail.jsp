@@ -21,7 +21,6 @@
 %>
 		<p><%=loginUser.getStaffName()%>先生がログイン中</p>
 		<p>学生の詳細</p>
-		
 		<form action="">
 			<dl>
 				<dt>学籍番号</dt>
@@ -36,11 +35,21 @@
 			
 				<dt>メモ</dt>
 				<dd>
-					<textarea></textarea>
+					<textarea><%
+						if(memo != null) {%><%=memo.getMemo()%><%}
+					%></textarea>
 				</dd>
 				
 				<dt>メモ作成者</dt>
-				<dd></dd>
+				<dd>
+<%
+					if(staff != null) {
+%>
+						<%=staff.getStaffName()%>
+<%
+					}
+%>
+				</dd>
 			</dl>
 		</form>
 	</body>
