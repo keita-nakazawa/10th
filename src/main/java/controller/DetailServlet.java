@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.DetailManager;
 import model.Memo;
@@ -24,9 +25,10 @@ public class DetailServlet extends HttpServlet {
 		Memo memo = detailManager.searchMemo(student);
 		Staff staff = detailManager.searchStaff(memo);
 
-		request.setAttribute("student", student);
-		request.setAttribute("memo", memo);
-		request.setAttribute("staff", staff);
+		HttpSession session = request.getSession();
+		session.setAttribute("student", student);
+		session.setAttribute("memo", memo);
+		session.setAttribute("staff", staff);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("studentDetail.jsp");
 		rd.forward(request, response);

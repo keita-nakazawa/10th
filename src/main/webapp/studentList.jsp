@@ -16,7 +16,7 @@
 <%
 		Staff loginUser = (Staff)session.getAttribute("loginUser");
 		ArrayList<Student> studentList = 
-				(ArrayList)request.getAttribute("studentList");
+				(ArrayList)session.getAttribute("studentList");
 %>	
 		<p id="top"><%=loginUser.getStaffName()%>先生がログイン中</p>
 		<form action="LoginLogoutServlet" method="GET">

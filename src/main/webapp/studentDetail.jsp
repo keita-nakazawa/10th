@@ -15,27 +15,27 @@
 	<body>
 <%
 		Staff loginUser = (Staff)session.getAttribute("loginUser");
-		Student student = (Student)request.getAttribute("student");
-		Memo memo = (Memo)request.getAttribute("memo");
-		Staff staff = (Staff)request.getAttribute("staff");
+		Student student = (Student)session.getAttribute("student");
+		Memo memo = (Memo)session.getAttribute("memo");
+		Staff staff = (Staff)session.getAttribute("staff");
 %>
 		<p><%=loginUser.getStaffName()%>先生がログイン中</p>
 		<p>学生の詳細</p>
-		<form action="">
+		<form action="EditServlet" method="POST">
 			<dl>
 				<dt>学籍番号</dt>
 				<dd>
-					<input type="text" value=<%=student.getStudentNumber()%>>
+					<input type="text" name="studentNumber" value=<%=student.getStudentNumber()%>>
 				</dd>
 				
 				<dt>氏名</dt>
 				<dd>
-					<input type="text" value=<%=student.getStudentName()%>>
+					<input type="text" name="studentName" value=<%=student.getStudentName()%>>
 				</dd>
 			
 				<dt>メモ</dt>
 				<dd>
-					<textarea><%
+					<textarea name="memo"><%
 						if(memo != null) {%><%=memo.getMemo()%><%}
 					%></textarea>
 				</dd>
@@ -51,6 +51,19 @@
 %>
 				</dd>
 			</dl>
+			
+			<p>
+				<input type="submit" value="編集内容を保存する">
+				※変更を加えていない場合でも、メモ作成者だけは更新されます
+			</p>
 		</form>
+		
+		<form action="delete.jsp">
+			<input type="submit" value="この学生の情報を削除する">
+		</form>
+		<br>
+		<br>
+		<p><a href="studentList.jsp">学生名簿一覧へ戻る</a></p>
+		
 	</body>
 </html>
