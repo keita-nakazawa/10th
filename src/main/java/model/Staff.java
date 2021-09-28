@@ -6,6 +6,11 @@ public class Staff {
 	private String staffName;
 	private String pass;
 	
+	public Staff(int staffId, String staffName) {
+		this.staffId = staffId;
+		this.staffName = staffName;
+	}
+	
 	public Staff(int staffId, String staffName, String pass) {
 		this.staffId = staffId;
 		this.staffName = staffName;

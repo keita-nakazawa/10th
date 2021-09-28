@@ -9,15 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.DetailManager;
+import model.Student;
+
 @WebServlet("/DetailServlet")
 public class DetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//学生の詳細表示処理
-		
+		DetailManager detailManager = new DetailManager();
 //		ArrayList<Memo> memoList = (ArrayList)session.getAttribute("memoList");
 //		ArrayList<Staff> staffList = (ArrayList)session.getAttribute("staffList");
 		
-//		Student student = DetailManager.searchStudent(studentList, request);
+		Student student = detailManager.searchStudent(request);
 //		Memo memo = DetailManager.searchMemo(student, memoList);
 //		Staff staff = DetailManager.searchStaff(memo, staffList);
 
