@@ -15,28 +15,33 @@
 	<body>
 <%
 		Staff loginUser = (Staff)session.getAttribute("loginUser");
-		ArrayList<Memo> memoList = 
-				(ArrayList)session.getAttribute("memoList");
-		ArrayList<Staff> staffList = 
-				(ArrayList)session.getAttribute("staffList");
-		ArrayList<Student> studentList = 
-				(ArrayList)session.getAttribute("studentList");
+		Student student = (Student)request.getAttribute("student");
+		Memo memo = (Memo)request.getAttribute("memo");
+		Staff staff = (Staff)request.getAttribute("staff");
 %>
-		
+		<p><%=loginUser.getStaffName()%>先生がログイン中</p>
 		<p>学生の詳細</p>
-		<ul>
-			<li>
-				<p>学籍番号</p>
-				<p><%=%></p>
-			</li>
-			<li>
-				<p>氏名</p>
-				<p></p>
-			</li>
-			<li>
-				<p>メモ</p>
-				<p></p>
-			</li>
-		</ul>
+		
+		<form action="">
+			<dl>
+				<dt>学籍番号</dt>
+				<dd>
+					<input type="text" value=<%=student.getStudentNumber()%>>
+				</dd>
+				
+				<dt>氏名</dt>
+				<dd>
+					<input type="text" value=<%=student.getStudentName()%>>
+				</dd>
+			
+				<dt>メモ</dt>
+				<dd>
+					<textarea></textarea>
+				</dd>
+				
+				<dt>メモ作成者</dt>
+				<dd></dd>
+			</dl>
+		</form>
 	</body>
 </html>

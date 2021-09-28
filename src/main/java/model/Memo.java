@@ -4,13 +4,13 @@ public class Memo {
 
 	private int memoId;
 	private String studentNumber;
-	private int staffId;
+	private int updatedStaffId;
 	private String memo;
 	
-	public Memo(int memoId, String studentNumber, int staffId, String memo) {
+	public Memo(int memoId, String studentNumber, int updatedStaffId, String memo) {
 		this.memoId = memoId;
 		this.studentNumber = studentNumber;
-		this.staffId = staffId;
+		this.updatedStaffId = updatedStaffId;
 		this.memo = memo;
 	}
 	
@@ -22,8 +22,8 @@ public class Memo {
 		return studentNumber;
 	}
 	
-	public int getStaffId() {
-		return staffId;
+	public int getUpdatedStaffId() {
+		return updatedStaffId;
 	}
 	
 	public String getMemo() {

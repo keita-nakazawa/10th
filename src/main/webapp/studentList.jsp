@@ -15,12 +15,8 @@
 	<body>
 <%
 		Staff loginUser = (Staff)session.getAttribute("loginUser");
-		ArrayList<Memo> memoList = 
-				(ArrayList)session.getAttribute("memoList");
-		ArrayList<Staff> staffList = 
-				(ArrayList)session.getAttribute("staffList");
 		ArrayList<Student> studentList = 
-				(ArrayList)session.getAttribute("studentList");
+				(ArrayList)request.getAttribute("studentList");
 %>	
 		<p id="top"><%=loginUser.getStaffName()%>先生がログイン中</p>
 		<form action="LoginLogoutServlet" method="GET">

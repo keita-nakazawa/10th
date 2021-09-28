@@ -62,9 +62,9 @@ public class LoginManager {
 			session.setAttribute("loginUser", staff);
 			
 			ListManager listManager = new ListManager();
-			session.setAttribute("memoList", listManager.getMemoList());
-			session.setAttribute("staffList", listManager.getStaffList());
-			session.setAttribute("studentList", listManager.getStudentList());
+//			session.setAttribute("memoList", listManager.getMemoList());
+//			session.setAttribute("staffList", listManager.getStaffList());
+			request.setAttribute("studentList", listManager.getStudentList());
 
 			RequestDispatcher rd = request.getRequestDispatcher("studentList.jsp");
 			rd.forward(request, response);

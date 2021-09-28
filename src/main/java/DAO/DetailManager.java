@@ -1,6 +1,5 @@
-package model;
+package DAO;
 
 public class DetailManager {
 
-	
 }

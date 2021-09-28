@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.Memo;
-import model.Staff;
 import model.Student;
 
 public class ListManager {
@@ -16,65 +14,6 @@ public class ListManager {
 	private Connection con = null;
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
-	
-	public ArrayList<Memo> getMemoList() {
-		ArrayList<Memo> memoList = new ArrayList<>();
-		
-		try {
-			//データベースへの接続処理
-			getConnect();
-		
-			String sql = "SELECT * FROM memo";
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				int memoId = rs.getInt("memo_id");
-				String studentNumber = rs.getString("student_number");
-				int updatedStaffId = rs.getInt("updated_staff_id");
-				String memoText = rs.getString("memo");
-				Memo memo = new Memo(memoId, studentNumber, updatedStaffId, memoText);
-				memoList.add(memo);
-			}
-		} catch(ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeAll();
-		}
-		
-		return memoList;
-	}
-	
-	public ArrayList<Staff> getStaffList() {
-		ArrayList<Staff> staffList = new ArrayList<>();
-		
-		try {
-			//データベースへの接続処理
-			getConnect();
-		
-			String sql = "SELECT * FROM staff";
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				int staffId = rs.getInt("staff_id");
-				String staffName = rs.getString("staff_name");
-				String pass = rs.getString("login_password");
-				Staff staff = new Staff(staffId, staffName, pass);
-				staffList.add(staff);
-			}
-		} catch(ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeAll();
-		}
-		
-		return staffList;
-	}
 	
 	public ArrayList<Student> getStudentList() {
 		ArrayList<Student> studentList = new ArrayList<>();
@@ -131,3 +70,65 @@ public class ListManager {
 		}	
 	}
 }
+
+
+
+
+//public ArrayList<Memo> getMemoList() {
+//	ArrayList<Memo> memoList = new ArrayList<>();
+//	
+//	try {
+//		//データベースへの接続処理
+//		getConnect();
+//	
+//		String sql = "SELECT * FROM memo";
+//		ps = con.prepareStatement(sql);
+//		rs = ps.executeQuery();
+//		
+//		while(rs.next()) {
+//			int memoId = rs.getInt("memo_id");
+//			String studentNumber = rs.getString("student_number");
+//			int updatedStaffId = rs.getInt("updated_staff_id");
+//			String memoText = rs.getString("memo");
+//			Memo memo = new Memo(memoId, studentNumber, updatedStaffId, memoText);
+//			memoList.add(memo);
+//		}
+//	} catch(ClassNotFoundException e) {
+//		e.printStackTrace();
+//	} catch(SQLException e) {
+//		e.printStackTrace();
+//	} finally {
+//		closeAll();
+//	}
+//	
+//	return memoList;
+//}
+//
+//public ArrayList<Staff> getStaffList() {
+//	ArrayList<Staff> staffList = new ArrayList<>();
+//	
+//	try {
+//		//データベースへの接続処理
+//		getConnect();
+//	
+//		String sql = "SELECT * FROM staff";
+//		ps = con.prepareStatement(sql);
+//		rs = ps.executeQuery();
+//		
+//		while(rs.next()) {
+//			int staffId = rs.getInt("staff_id");
+//			String staffName = rs.getString("staff_name");
+//			String pass = rs.getString("login_password");
+//			Staff staff = new Staff(staffId, staffName, pass);
+//			staffList.add(staff);
+//		}
+//	} catch(ClassNotFoundException e) {
+//		e.printStackTrace();
+//	} catch(SQLException e) {
+//		e.printStackTrace();
+//	} finally {
+//		closeAll();
+//	}
+//	
+//	return staffList;
+//}
