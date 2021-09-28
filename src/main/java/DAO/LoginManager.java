@@ -1,10 +1,17 @@
 package DAO;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Staff;
 
@@ -14,7 +21,7 @@ public class LoginManager {
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 	
-	public Staff login(String staffId, String pass) {
+	public Staff loginUser(String staffId, String pass) {
  		Staff staff = null;
  		String staffName = null;
  		int iStaffId = Integer.parseInt(staffId);
@@ -47,7 +54,31 @@ public class LoginManager {
 		
 		return staff;
 	}
-		
+	
+	public void loginOrNot(Staff staff, HttpSession session, HttpServletRequest request, HttpServletResponse response) 
+				throws ServletException, IOException {
+		if(staff != null) {
+			//ログイン成功時処理
+			session.setAttribute("loginUser", staff);
+			
+			ListManager listManager = new ListManager();
+			session.setAttribute("memoList", listManager.getMemoList());
+			session.setAttribute("staffList", listManager.getStaffList());
+			session.setAttribute("studentList", listManager.getStudentList());
+
+			RequestDispatcher rd = request.getRequestDispatcher("studentList.jsp");
+			rd.forward(request, response);
+		} else {
+			//ログイン失敗時処理
+			String message = "ログインに失敗しました</br>"
+					+ "入力内容をご確認ください";
+			request.setAttribute("message", message);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
+		}
+	}
+	
 	
 	public void getConnect() throws ClassNotFoundException, SQLException{
 		Class.forName("org.mariadb.jdbc.Driver");

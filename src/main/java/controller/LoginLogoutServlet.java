@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.ListManager;
 import DAO.LoginManager;
 import model.Staff;
 
@@ -21,32 +20,12 @@ public class LoginLogoutServlet extends HttpServlet {
 		//ログイン処理
 		String staffId = request.getParameter("staffId");
 		String pass = request.getParameter("pass");
-		
-		LoginManager loginManager = new LoginManager();
-		Staff staff = loginManager.login(staffId, pass);
-
 		HttpSession session = request.getSession();
 		
-		if(staff != null) {
-			//ログイン成功時処理
-			session.setAttribute("loginUser", staff);
-			
-			ListManager listManager = new ListManager();
-			session.setAttribute("memoList", listManager.getMemoList());
-			session.setAttribute("staffList", listManager.getStaffList());
-			session.setAttribute("studentList", listManager.getStudentList());
+		LoginManager loginManager = new LoginManager();
+		Staff staff = loginManager.loginUser(staffId, pass);
 
-			RequestDispatcher rd = request.getRequestDispatcher("studentList.jsp");
-			rd.forward(request, response);			
-		} else {
-			//ログイン失敗時処理
-			String message = "ログインに失敗しました</br>"
-					+ "入力内容をご確認ください";
-			request.setAttribute("message", message);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-			rd.forward(request, response);
-		}
+		loginManager.loginOrNot(staff, session, request, response);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
