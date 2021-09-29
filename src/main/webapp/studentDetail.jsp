@@ -15,9 +15,10 @@
 	<body>
 <%
 		Staff loginUser = (Staff)session.getAttribute("loginUser");
-		Student student = (Student)session.getAttribute("student");
-		Memo memo = (Memo)session.getAttribute("memo");
-		Staff staff = (Staff)session.getAttribute("staff");
+		String studentNumber = (String)session.getAttribute("studentNumber");
+		String studentName = (String)session.getAttribute("studentName");
+		String memoText = (String)session.getAttribute("memoText");
+		String staffName = (String)session.getAttribute("staffName");
 %>
 		<p><%=loginUser.getStaffName()%>先生がログイン中</p>
 		<p>学生の詳細</p>
@@ -25,33 +26,22 @@
 			<dl>
 				<dt>学籍番号</dt>
 				<dd>
-					<input type="text" name="studentNumber" value=<%=student.getStudentNumber()%>>
+					<input type="text" name="studentNumber" value=<%=studentNumber%>>
 				</dd>
 				
 				<dt>氏名</dt>
 				<dd>
-					<input type="text" name="studentName" value=<%=student.getStudentName()%>>
+					<input type="text" name="studentName" value=<%=studentName%>>
 				</dd>
 			
 				<dt>メモ</dt>
 				<dd>
-					<textarea name="memo"><%
-						if(memo != null) {%><%=memo.getMemo()%><%}
-					%></textarea>
+					<textarea name="memoText"><%=memoText%></textarea>
 				</dd>
 				
 				<dt>メモ作成者</dt>
-				<dd>
-<%
-					if(staff != null) {
-%>
-						<%=staff.getStaffName()%>
-<%
-					}
-%>
-				</dd>
+				<dd><%=staffName%></dd>
 			</dl>
-			
 			<p>
 				<input type="submit" value="編集内容を保存する">
 			</p>

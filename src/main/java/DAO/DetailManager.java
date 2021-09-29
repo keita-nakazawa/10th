@@ -19,7 +19,7 @@ public class DetailManager {
 	private ResultSet rs = null;
 	
 	public Student searchStudent(HttpServletRequest request) {
-		Student student = null;
+		Student student = new Student();
 		
 		try {
 			//データベースへの接続処理
@@ -50,7 +50,7 @@ public class DetailManager {
 	}
 	
 	public Memo searchMemo(Student student) {
-		Memo memo = null;
+		Memo memo = new Memo("");
 		
 		try {
 			//データベースへの接続処理
@@ -67,8 +67,8 @@ public class DetailManager {
 					int memoId = rs.getInt("memo_id");
 					String studentNumber = rs.getString("student_number");
 					int updatedStaffId = rs.getInt("updated_staff_id");
-					String mem = rs.getString("memo");
-					memo = new Memo(memoId, studentNumber, updatedStaffId, mem);
+					String memoText = rs.getString("memo_text");
+					memo = new Memo(memoId, studentNumber, updatedStaffId, memoText);
 					break;
 				}
 			}
@@ -83,9 +83,9 @@ public class DetailManager {
 	}
 	
 	public Staff searchStaff(Memo memo) {
-		Staff staff = null;
+		Staff staff = new Staff("なし");
 		
-		if(memo != null) {
+		if(memo != new Memo("")) {
 			try {
 				//データベースへの接続処理
 				getConnect();

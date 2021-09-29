@@ -26,9 +26,11 @@ public class DetailServlet extends HttpServlet {
 		Staff staff = detailManager.searchStaff(memo);
 
 		HttpSession session = request.getSession();
-		session.setAttribute("student", student);
-		session.setAttribute("memo", memo);
-		session.setAttribute("staff", staff);
+		session.setAttribute("studentNumber", student.getStudentNumber());
+		session.setAttribute("studentName", student.getStudentName());
+		session.setAttribute("memoId", memo.getMemoId());
+		session.setAttribute("memoText", memo.getMemoText());
+		session.setAttribute("staffName", staff.getStaffName());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("studentDetail.jsp");
 		rd.forward(request, response);

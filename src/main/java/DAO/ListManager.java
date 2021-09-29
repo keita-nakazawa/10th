@@ -73,7 +73,6 @@ public class ListManager {
 
 
 
-
 //public ArrayList<Memo> getMemoList() {
 //	ArrayList<Memo> memoList = new ArrayList<>();
 //	

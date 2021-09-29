@@ -5,6 +5,10 @@ public class Student {
 	private String studentNumber;
 	private String studentName;
 	
+	public Student() {
+		
+	}
+	
 	public Student(String studentNumber, String studentName) {
 		this.studentNumber = studentNumber;
 		this.studentName = studentName;

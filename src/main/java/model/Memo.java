@@ -5,13 +5,17 @@ public class Memo {
 	private int memoId;
 	private String studentNumber;
 	private int updatedStaffId;
-	private String memo;
+	private String memoText;
 	
-	public Memo(int memoId, String studentNumber, int updatedStaffId, String memo) {
+	public Memo(String memoText) {
+		this.memoText = memoText;
+	}
+	
+	public Memo(int memoId, String studentNumber, int updatedStaffId, String memoText) {
 		this.memoId = memoId;
 		this.studentNumber = studentNumber;
 		this.updatedStaffId = updatedStaffId;
-		this.memo = memo;
+		this.memoText = memoText;
 	}
 	
 	public int getMemoId() {
@@ -26,11 +30,11 @@ public class Memo {
 		return updatedStaffId;
 	}
 	
-	public String getMemo() {
-		return memo;
+	public String getMemoText() {
+		return memoText;
 	}
 	
-	public void setMemo(String memo) {
-		this.memo = memo;
+	public void setMemo(String memoText) {
+		this.memoText = memoText;
 	}
 }

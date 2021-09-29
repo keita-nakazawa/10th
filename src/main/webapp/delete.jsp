@@ -12,11 +12,12 @@
 	
 	<body>
 <%
-		Student student = (Student)session.getAttribute("student");
+		String studentNumber = (String)session.getAttribute("studentNumber");
+		String studentName = (String)session.getAttribute("studentName");
 %>
 		<p>本当に以下の学生の情報を削除しますか?</p>
-		<p>学籍番号：<%=student.getStudentNumber()%></p>
-		<p>氏名：<%=student.getStudentName()%></p>
+		<p>学籍番号：<%=studentNumber%></p>
+		<p>氏名：<%=studentName%></p>
 		<form action="DeleteServlet">
 			<input type="submit" value="削除">
 		</form>
