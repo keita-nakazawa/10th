@@ -90,7 +90,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('a\"','\"'),('a123124 e','全角スペース\'　\''),('af','235'),('d3242','半角スペース\' \''),('r42552','mic'),('wasd','全角スペース\'　\''),('学籍ばんごう','氏名　しめい name');
+INSERT INTO `student` VALUES ('a','\"'),('a123124 e','全角スペース\'　\''),('af','235'),('d3242','半角スペース\' \''),('r42552','mic'),('wasd','全角スペース\'　\''),('学籍ばんごう','氏名　しめい name');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -103,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-30 15:11:43
+-- Dump completed on 2021-09-30 16:05:21
