@@ -28,11 +28,11 @@ CREATE TABLE `memo` (
   `updated_staff_id` int(11) DEFAULT NULL,
   `memo_text` text DEFAULT NULL,
   PRIMARY KEY (`memo_id`),
-  KEY `FK_memo_student_number` (`student_number`),
+  UNIQUE KEY `student_number` (`student_number`),
   KEY `FK_memo_staff_id` (`updated_staff_id`),
-  CONSTRAINT `FK_memo_staff_id` FOREIGN KEY (`updated_staff_id`) REFERENCES `staff` (`staff_id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_memo_student_number` FOREIGN KEY (`student_number`) REFERENCES `student` (`student_number`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_memo_staff_id` FOREIGN KEY (`updated_staff_id`) REFERENCES `staff` (`staff_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_memo_student_number` FOREIGN KEY (`student_number`) REFERENCES `student` (`student_number`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `memo` (
 
 LOCK TABLES `memo` WRITE;
 /*!40000 ALTER TABLE `memo` DISABLE KEYS */;
-INSERT INTO `memo` VALUES (1,'a0001',1,'メモ1');
+INSERT INTO `memo` VALUES (7,'a123124 e',1,'半角スペース\" \"\r\n全角スペース\"　\"'),(11,'d3242',1,'');
 /*!40000 ALTER TABLE `memo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,8 +56,7 @@ CREATE TABLE `staff` (
   `staff_id` int(11) NOT NULL,
   `staff_name` text NOT NULL,
   `login_password` varchar(10) NOT NULL DEFAULT '',
-  PRIMARY KEY (`staff_id`),
-  UNIQUE KEY `staff_name` (`staff_name`) USING HASH
+  PRIMARY KEY (`staff_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -81,9 +80,7 @@ DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
   `student_number` varchar(10) NOT NULL,
   `student_name` text NOT NULL,
-  PRIMARY KEY (`student_number`),
-  UNIQUE KEY `student_name` (`student_name`) USING HASH,
-  UNIQUE KEY `student_name_2` (`student_name`) USING HASH
+  PRIMARY KEY (`student_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -93,7 +90,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('a0001','あ'),('a0002','い'),('b298732','お');
+INSERT INTO `student` VALUES ('a\"','\"'),('a123124 e','全角スペース\'　\''),('af','235'),('d3242','半角スペース\' \''),('r42552','mic'),('wasd','全角スペース\'　\''),('学籍ばんごう','氏名　しめい name');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-29 10:14:26
+-- Dump completed on 2021-09-30 15:11:43
