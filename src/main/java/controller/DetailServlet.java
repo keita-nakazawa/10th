@@ -31,7 +31,7 @@ public class DetailServlet extends HttpServlet {
 		session.setAttribute("memoId", memo.getMemoId());
 		session.setAttribute("memoText", memo.getMemoText());
 		session.setAttribute("staffName", staff.getStaffName());
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher("studentDetail.jsp");
 		rd.forward(request, response);
 	}

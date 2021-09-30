@@ -29,7 +29,7 @@ public class EditServlet extends HttpServlet {
 		String oldStudentName = (String)session.getAttribute("studentName");
 		String oldMemoText = (String)session.getAttribute("memoText");
 		
-		//フォームとsessionを比較し、DBとsession内の学生情報・メモを更新
+		//フォーム入力内容とsessionを比較し、必要に応じてDBとsession内の学生情報・メモを更新
 		EditManager editManager = new EditManager();
 		editManager.changeMemo(newMemoText, oldMemoText, session);
 		editManager.changeStudentNumber(newStudentNumber, oldStudentNumber, session);

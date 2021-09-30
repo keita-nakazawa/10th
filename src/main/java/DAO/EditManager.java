@@ -3,7 +3,6 @@ package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpSession;
@@ -14,7 +13,6 @@ public class EditManager {
 
 	private Connection con = null;
 	private PreparedStatement ps = null;
-	private ResultSet rs = null;
 	
 	public void changeStudentNumber(String newStudentNumber,String oldStudentNumber, HttpSession session) {
 		if(newStudentNumber.equals(oldStudentNumber) == false) {
@@ -27,8 +25,9 @@ public class EditManager {
 				ps = con.prepareStatement(sql);
 				ps.setString(1, newStudentNumber);
 				ps.setString(2, oldStudentNumber);
+				System.out.println(ps);
 				
-				rs = ps.executeQuery();
+				ps.executeUpdate();
 				
 				session.setAttribute("studentNumber", newStudentNumber);
 				
@@ -39,8 +38,6 @@ public class EditManager {
 			} finally {
 				closeAll();
 			}
-		} else {
-			//処理なし
 		}
 	}
 	
@@ -55,8 +52,9 @@ public class EditManager {
 				ps = con.prepareStatement(sql);
 				ps.setString(1, newStudentName);
 				ps.setString(2, oldStudentName);
+				System.out.println(ps);
 				
-				rs = ps.executeQuery();
+				ps.executeUpdate();
 				
 				session.setAttribute("studentName", newStudentName);
 				
@@ -67,8 +65,6 @@ public class EditManager {
 			} finally {
 				closeAll();
 			}
-		} else {
-			//処理なし
 		}
 	}
 	
@@ -79,7 +75,6 @@ public class EditManager {
 				getConnect();
 
 				int memoId = (Integer)session.getAttribute("memoId");
-				String sql = new String();
 				int staffId =
 						((Staff)session.getAttribute("loginUser")).getStaffId();
 				String studentNumber =
@@ -89,21 +84,22 @@ public class EditManager {
 				
 				if(memoId == 0) {
 					//該当学生のメモデータがDBにない時のSQL文
-					sql = "INSERT INTO memo VALUES (null, ?, ?, ?)";
+					String sql = "INSERT INTO memo VALUES (null, ?, ?, ?)";
 					ps = con.prepareStatement(sql);
 					ps.setString(1, studentNumber);
 					ps.setInt(2, staffId);
 					ps.setString(3, newMemoText);
 				} else {
 					//該当学生のメモデータがDBにある時のSQL文
-					sql = "UPDATE memo SET memo_text = ?, updated_staff_id = ?"
+					String sql = "UPDATE memo SET memo_text = ?, updated_staff_id = ?"
 							+ " WHERE memo_id = ?";
 					ps = con.prepareStatement(sql);
 					ps.setString(1, newMemoText);
 					ps.setInt(2, staffId);
 					ps.setInt(3, memoId);
 				}
-				rs = ps.executeQuery();
+				System.out.println(ps);
+				ps.executeUpdate();
 				
 				session.setAttribute("memoText", newMemoText);
 				session.setAttribute("staffName", staffName);
@@ -117,7 +113,6 @@ public class EditManager {
 			}
 		}
 	}
-	
 	
 	public void getConnect() throws ClassNotFoundException, SQLException{
 		Class.forName("org.mariadb.jdbc.Driver");
@@ -136,9 +131,6 @@ public class EditManager {
 			}
 			if(ps != null) {
 				ps.close();
-			}
-			if(rs != null) {
-				rs.close();
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
