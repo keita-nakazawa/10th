@@ -35,9 +35,9 @@ public class EditServlet extends HttpServlet {
 		editManager.changeStudentNumber(newStudentNumber, oldStudentNumber, session);
 		editManager.changeStudentName(newStudentName, oldStudentName, session);
 		
-		//session内の学生名簿一覧を更新
+		//request内の学生名簿一覧を更新
 		ListManager listManager = new ListManager();
-		session.setAttribute("studentList", listManager.getStudentList());
+		request.setAttribute("studentList", listManager.getStudentList());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("studentDetail.jsp");
 		rd.forward(request, response);

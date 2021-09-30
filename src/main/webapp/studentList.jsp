@@ -16,13 +16,13 @@
 <%
 		Staff loginUser = (Staff)session.getAttribute("loginUser");
 		ArrayList<Student> studentList = 
-				(ArrayList)session.getAttribute("studentList");
+				(ArrayList)request.getAttribute("studentList");
 %>	
 		<p id="top"><%=loginUser.getStaffName()%>先生がログイン中</p>
 		<form action="LoginLogoutServlet" method="GET">
 			<p><input type="submit" value="ログアウト"></p>
 		</form>
-		<p>学生情報の登録は<a href="registerStudent.jsp">こちら</a></p>
+		<p>学生情報の登録は<a href="register.jsp">こちら</a></p>
 		
 		<table border="1">
 			<thead>
@@ -41,7 +41,7 @@
 						<td><%=student.getStudentName()%></td>
 						<td>
 							<form action="DetailServlet">
-								<input type="submit" name=<%=student.getStudentNumber()%> value="詳細・編集・削除">
+								<input type="submit" name="<%=student.getStudentNumber()%>" value="詳細・編集・削除">
 							</form>
 						</td>
 					</tr>

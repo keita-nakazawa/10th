@@ -26,12 +26,12 @@
 			<dl>
 				<dt>学籍番号</dt>
 				<dd>
-					<input type="text" name="studentNumber" value=<%=studentNumber%>>
+					<input type="text" name="studentNumber" value="<%=studentNumber%>">
 				</dd>
 				
 				<dt>氏名</dt>
 				<dd>
-					<input type="text" name="studentName" value=<%=studentName%>>
+					<input type="text" name="studentName" value="<%=studentName%>">
 				</dd>
 			
 				<dt>メモ</dt>
@@ -52,7 +52,8 @@
 		</form>
 		<br>
 		<br>
-		<p><a href="studentList.jsp">学生名簿一覧へ戻る</a></p>
-		
+		<form action="ReturnServlet">
+			<input type="submit" value="学生名簿一覧へ戻る">
+		</form>		
 	</body>
 </html>
