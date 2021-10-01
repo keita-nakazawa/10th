@@ -32,7 +32,7 @@ CREATE TABLE `memo` (
   KEY `FK_memo_staff_id` (`updated_staff_id`),
   CONSTRAINT `FK_memo_staff_id` FOREIGN KEY (`updated_staff_id`) REFERENCES `staff` (`staff_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_memo_student_number` FOREIGN KEY (`student_number`) REFERENCES `student` (`student_number`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `memo` (
 
 LOCK TABLES `memo` WRITE;
 /*!40000 ALTER TABLE `memo` DISABLE KEYS */;
-INSERT INTO `memo` VALUES (7,'a123124 e',1,'半角スペース\" \"\r\n全角スペース\"　\"'),(11,'d3242',1,'');
+INSERT INTO `memo` VALUES (7,'a123124',1,'yy'),(14,'a11111',1,'');
 /*!40000 ALTER TABLE `memo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES ('a','\"'),('a123124 e','全角スペース\'　\''),('af','235'),('d3242','半角スペース\' \''),('r42552','mic'),('wasd','全角スペース\'　\''),('学籍ばんごう','氏名　しめい name');
+INSERT INTO `student` VALUES ('a11111','同姓同名'),('a123124','同姓同名'),('kigou','氏名に使える半角記号→()='),('MJ','マイケル=ジャクソン'),('number','氏名　しめい name'),('r321',''),('r42552','mic'),('table','table'),('２','wえｒ');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -103,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-30 16:05:21
+-- Dump completed on 2021-10-01 14:46:35
