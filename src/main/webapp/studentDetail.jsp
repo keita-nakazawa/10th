@@ -26,12 +26,12 @@
 			<dl>
 				<dt>学籍番号</dt>
 				<dd>
-					<input type="text" name="studentNumber" value="<%=studentNumber%>">
+					<input type="text" pattern="^[0-9A-Za-z]{1,10}$" maxlength="10" name="studentNumber" value="<%=studentNumber%>">
 				</dd>
 				
 				<dt>氏名</dt>
 				<dd>
-					<input type="text" name="studentName" value="<%=studentName%>">
+					<input type="text" pattern="^[^!&quot;#$%&'\*\+\-\.,\/:;<>?@\[\\\]^_`{|}~]+$" name="studentName" value="<%=studentName%>">
 				</dd>
 			
 				<dt>メモ</dt>
@@ -57,3 +57,11 @@
 		</form>		
 	</body>
 </html>
+
+
+
+<!-- 
+https://pointsandlines.jp/server-side/php/smarty-input-value
+https://www-creators.com/archives/1827
+https://wakatech.jp/sanitize
+ -->

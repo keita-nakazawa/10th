@@ -31,9 +31,9 @@ public class EditServlet extends HttpServlet {
 		
 		//フォーム入力内容とsessionを比較し、必要に応じてDBとsession内の学生情報・メモを更新
 		EditManager editManager = new EditManager();
-		editManager.changeMemo(newMemoText, oldMemoText, session);
 		editManager.changeStudentNumber(newStudentNumber, oldStudentNumber, session);
-		editManager.changeStudentName(newStudentName, oldStudentName, session);
+		editManager.changeStudentName(newStudentName, oldStudentName, newStudentNumber, session);
+		editManager.changeMemo(newMemoText, oldMemoText, session);
 		
 		//request内の学生名簿一覧を更新
 		ListManager listManager = new ListManager();

@@ -41,17 +41,17 @@ public class EditManager {
 		}
 	}
 	
-	public void changeStudentName(String newStudentName,String oldStudentName, HttpSession session) {
+	public void changeStudentName(String newStudentName,String oldStudentName, String newStudentNumber, HttpSession session) {
 		if(newStudentName.equals(oldStudentName) == false) {
 			try {
 				//DBへの接続処理
 				getConnect();
 				
 				//SQL文の作成
-				String sql = "UPDATE student SET student_name = ? WHERE student_name = ?";
+				String sql = "UPDATE student SET student_name = ? WHERE student_number = ?";
 				ps = con.prepareStatement(sql);
 				ps.setString(1, newStudentName);
-				ps.setString(2, oldStudentName);
+				ps.setString(2, newStudentNumber);
 				System.out.println(ps);
 				
 				ps.executeUpdate();

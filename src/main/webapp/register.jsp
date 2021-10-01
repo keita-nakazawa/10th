@@ -20,14 +20,14 @@
 			<dl>
 				<dt>学籍番号</dt>
 				<dd>
-					<input type="text" name="studentNumber">
+					<input type="text" pattern="^[0-9A-Za-z]{1,10}$" maxlength="10" name="studentNumber" placeholder="半角英数字">
 				</dd>
 				
 				<dt>氏名</dt>
 				<dd>
-					<input type="text" name="studentName">
+					<input type="text" pattern="^[^!&quot;#$%&'\*\+\-\.,\/:;<>?@\[\\\]^_`{|}~]+$" name="studentName" placeholder="入力可能な半角記号→ ( ) =">
 				</dd>
-<!--			
+<!--			バックエンド側でもはじく処理をする必要あり。
 				<dt>メモ</dt>
 				<dd>
 					<textarea name="memoText"></textarea>
@@ -43,3 +43,10 @@
 			</form>
 	</body>
 </html>
+
+
+<!-- 
+https://pointsandlines.jp/server-side/php/smarty-input-value
+https://www-creators.com/archives/1827
+https://wakatech.jp/sanitize
+ -->
